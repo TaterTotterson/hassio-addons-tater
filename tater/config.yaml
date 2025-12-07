@@ -15,11 +15,8 @@ init: false
 host_network: true
 ingress: false
 
-# Optional but nice: let HA know there’s a web UI
 webui: "http://[HOST]:[PORT:8501]"
 
-# Ports are technically ignored with host_network: true,
-# but leaving them doesn't hurt validation.
 ports:
   "8501/tcp": 8501
   "8787/tcp": 8787
@@ -27,9 +24,6 @@ ports:
   "8789/tcp": 8789
   "8790/tcp": 8790
 
-# IMPORTANT: image must NOT have a tag here.
-# Supervisor will pull: ghcr.io/tatertotterson/tater:<version>
-# so make sure you've pushed tag 0.0.1 to GHCR.
 image: "ghcr.io/tatertotterson/tater"
 
 map:
@@ -39,7 +33,7 @@ options:
   llm_host: "10.4.20.210"
   llm_port: 1234
   llm_model: "qwen/qwen3-next-80b"
-  redis_host: "core-redis"
+  redis_host: "core-redis_stack"
   redis_port: 6379
 
 schema:
