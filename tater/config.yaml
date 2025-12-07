@@ -1,8 +1,8 @@
-name: Tater AI Assistant
+name: "Tater AI Assistant"
 slug: tater
-version: 0.0.1
-description: Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more.
-url: https://github.com/TaterTotterson/Tater
+version: "0.0.1"
+description: "Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more."
+url: "https://github.com/TaterTotterson/Tater"
 
 # Architectures your image actually supports
 arch:
@@ -23,15 +23,15 @@ ingress: false
 # 8501 = Streamlit WebUI
 # 8787 = internal API (if you want it reachable)
 ports:
-  "8501/tcp": 8501
-  "8787/tcp": 8787
-  "8788/tcp": 8788
-  "8789/tcp": 8789
-  "8790/tcp": 8790
+  8501/tcp: 8501
+  8787/tcp: 8787
+  8788/tcp: 8788
+  8789/tcp: 8789
+  8790/tcp: 8790
 
 # Use your prebuilt image on GHCR
 # If the tag is multi-arch, this is fine as-is.
-image: "ghcr.io/tatertotterson/tater:latest"
+image: ghcr.io/tatertotterson/tater:latest
 
 # Optional: map HA's /config or /share into Tater if you want
 map:
