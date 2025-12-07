@@ -1,16 +1,14 @@
-# Wrapper image that *uses your prebuilt Tater image* as the base
-ARG BUILD_FROM=ghcr.io/tatertotterson/tater:latest
-FROM ${BUILD_FROM}
+# Use your existing prebuilt Tater image as the base
+FROM ghcr.io/tatertotterson/tater:latest
 
-# Install jq so run.sh can parse /data/options.json
-# (Assumes Debian/Ubuntu base image, which your Tater image uses.)
+# Install jq so we can read /data/options.json
 RUN apt-get update \
     && apt-get install -y --no-install-recommends jq \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy our HA entrypoint
+# Copy the run script
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-# Use the wrapper script as the container command
+# Use our wrapper as the container entrypoint
 CMD ["/run.sh"]
