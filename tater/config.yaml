@@ -12,17 +12,18 @@ startup: services
 boot: auto
 init: false
 
+# We want everything (8501, 8787–8790) reachable on the HA host
 host_network: true
 ingress: false
 
 webui: "http://[HOST]:[PORT:8501]"
 
-# Use prebuilt multi-arch image (no tag here, HA will pick by version)
-image: "ghcr.io/tatertotterson/tater"
+# NOTE: no 'image:' here anymore — HA will build from this add-on's Dockerfile.
 
 map:
   - share:rw
 
+# User-configurable options that live in /data/options.json
 options:
   llm_host: "10.4.20.210"
   llm_port: 1234
@@ -36,9 +37,3 @@ schema:
   llm_model: str
   redis_host: str
   redis_port: int
-
-environment:
-  LLM_HOST: "{llm_host}"
-  LLM_MODEL: "{llm_model}"
-  REDIS_HOST: "{redis_host}"
-  REDIS_PORT: "{redis_port}"
