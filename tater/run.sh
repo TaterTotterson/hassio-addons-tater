@@ -3,34 +3,28 @@ set -e
 
 CONFIG_PATH=/data/options.json
 
-echo "[Tater add-on] Using config at ${CONFIG_PATH}"
+# Read user options from Home Assistant (with sane defaults)
+LLM_HOST=$(jq -r '.llm_host // "10.4.20.210"' "$CONFIG_PATH")
+LLM_PORT=$(jq -r '.llm_port // 1234' "$CONFIG_PATH")
+LLM_MODEL=$(jq -r '.llm_model // "qwen/qwen3-next-80b"' "$CONFIG_PATH")
+REDIS_HOST=$(jq -r '.redis_host // "core-redis_stack"' "$CONFIG_PATH")
+REDIS_PORT=$(jq -r '.redis_port // 6379' "$CONFIG_PATH")
 
-if [ -f "$CONFIG_PATH" ]; then
-  # Read values from HA options.json
-  LLM_HOST=$(jq -r '.llm_host // empty' "$CONFIG_PATH")
-  LLM_PORT=$(jq -r '.llm_port // empty' "$CONFIG_PATH")
-  LLM_MODEL=$(jq -r '.llm_model // empty' "$CONFIG_PATH")
-  REDIS_HOST=$(jq -r '.redis_host // empty' "$CONFIG_PATH")
-  REDIS_PORT=$(jq -r '.redis_port // empty' "$CONFIG_PATH")
+export LLM_HOST="$LLM_HOST"
+export LLM_PORT="$LLM_PORT"
+export LLM_MODEL="$LLM_MODEL"
+export REDIS_HOST="$REDIS_HOST"
+export REDIS_PORT="$REDIS_PORT"
 
-  # Export only if set
-  [ -n "$LLM_HOST" ]   && export LLM_HOST
-  [ -n "$LLM_PORT" ]   && export LLM_PORT
-  [ -n "$LLM_MODEL" ]  && export LLM_MODEL
-  [ -n "$REDIS_HOST" ] && export REDIS_HOST
-  [ -n "$REDIS_PORT" ] && export REDIS_PORT
-fi
-
-# Sensible defaults if Redis fields are missing
-export REDIS_HOST="${REDIS_HOST:-core-redis_stack}"
-export REDIS_PORT="${REDIS_PORT:-6379}"
-
-echo "[Tater add-on] Starting with:"
-echo "  LLM_HOST=${LLM_HOST:-<unset>}"
-echo "  LLM_PORT=${LLM_PORT:-<unset>}"
-echo "  LLM_MODEL=${LLM_MODEL:-<unset>}"
+echo "Starting Tater with:"
+echo "  LLM_HOST=${LLM_HOST}"
+echo "  LLM_PORT=${LLM_PORT}"
+echo "  LLM_MODEL=${LLM_MODEL}"
 echo "  REDIS_HOST=${REDIS_HOST}"
 echo "  REDIS_PORT=${REDIS_PORT}"
 
-# Start Tater WebUI (your original image uses Streamlit)
+# Your base image's WORKDIR is /app; make sure we're there
+cd /app
+
+# Start the same thing your prebuilt image would have started
 exec streamlit run webui.py --server.address 0.0.0.0 --server.port 8501
