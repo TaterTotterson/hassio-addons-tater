@@ -1,40 +1,50 @@
 name: Tater AI Assistant
 slug: tater
-version: "0.1.0"
 description: >
-  Tater is an AI assistant with a WebUI, Home Assistant / Automations integration,
-  and support for Discord, IRC, Matrix, XBMC, and more.
+  Tater is a multi-platform AI assistant with a WebUI and
+  Home Assistant integration.
+url: https://github.com/TaterTotterson/Tater
+version: "1.0.0"
+
 arch:
   - amd64
   - aarch64
+  
+image: ghcr.io/tatertotterson/tater:latest
 
-startup: application
+startup: services
 boot: auto
+init: false
 
-# Expose Tater's Streamlit WebUI
+# Tater WebUI (Streamlit)
 ports:
   "8501/tcp": 8501
 ports_description:
-  "8501/tcp": "Tater WebUI (http://homeassistant.local:8501 or via Ingress/Proxy)"
+  "8501/tcp": "Tater Web UI"
 
-# Map some folders if you need future persistence/logs
+# Optional but usually helpful
+host_network: true
+
 map:
-  - config:rw
-  - share:rw
+  - data:rw
 
-# Let the add-on access HA APIs if you want later:
-homeassistant_api: true
-hassio_api: true
+panel_icon: mdi:robot-happy-outline
+panel_title: Tater
 
-# Basic configuration options you might want to surface later
 options:
-  llm_host: "127.0.0.1:11434"
-  llm_model: "llama3.1"
-  llm_emb_model: "nomic-embed-text"
-schema:
-  llm_host: str
-  llm_model: str
-  llm_emb_model: str
+  REDIS_HOST: "127.0.0.1"
+  REDIS_PORT: 6379
+  LLM_HOST: "http://127.0.0.1:11434"
+  LLM_MODEL: "llama3.1"
 
-# Make sure Supervisor sets these env vars from the add-on options
-env_file: []
+schema:
+  REDIS_HOST: str
+  REDIS_PORT: int
+  LLM_HOST: str
+  LLM_MODEL: str
+
+environment:
+  REDIS_HOST: "!env_var REDIS_HOST"
+  REDIS_PORT: "!env_var REDIS_PORT"
+  LLM_HOST: "!env_var LLM_HOST"
+  LLM_MODEL: "!env_var LLM_MODEL"
