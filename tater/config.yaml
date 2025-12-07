@@ -36,10 +36,10 @@ map:
   - share:rw
 
 options:
-  llm_host: "http://host.docker.internal"
-  llm_port: 11434
-  llm_model: "gemma3-27b-abliterated"
-  redis_host: "homeassistant"
+  llm_host: "10.4.20.210"
+  llm_port: 1234
+  llm_model: "qwen/qwen3-next-80b"
+  redis_host: "core-redis"
   redis_port: 6379
 
 schema:
