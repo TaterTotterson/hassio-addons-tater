@@ -1,7 +1,8 @@
 # Tater Add-ons for Home Assistant
 
-This repository contains a Home Assistant add-on for running
-[Tater](https://github.com/TaterTotterson/Tater) directly on your Home Assistant system.
+This repository contains Home Assistant add-ons for running
+[Tater](https://github.com/TaterTotterson/Tater) and its required services
+directly on your Home Assistant system.
 
 ## 🥔 Install Tater for Home Assistant
 
@@ -11,24 +12,28 @@ First, add the Tater add-on repository to Home Assistant:
 https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/TaterTotterson/hassio-addons-tater
 )
 
-### 🧠 Install Redis Stack
+Once the repository has been added, **both add-ons will appear automatically**
+in the Home Assistant Add-on Store.
 
-Tater uses Redis for memory, plugins, and automations.  
-Install Redis Stack first (recommended for best experience):
+## 🧠 Install Redis Stack
 
-[![Install Redis Stack](https://my.home-assistant.io/badges/supervisor_addon.svg)](
-https://my.home-assistant.io/redirect/supervisor_addon/?addon=redis_stack&repository_url=https://github.com/TaterTotterson/hassio-addons-tater
-)
+Tater uses Redis for memory, plugins, and automations.
 
-After installing Redis Stack, start it before continuing.
+1. Open **Settings → Add-ons → Add-on Store**
+2. Find **Redis Stack** under the Tater add-on repository
+3. Install and **start** Redis Stack
 
-### 🤖 Install Tater AI Assistant
+Redis Stack should be running before Tater is started.
 
-Once Redis is running, install Tater:
+## 🤖 Install Tater AI Assistant
 
-[![Install Tater](https://my.home-assistant.io/badges/supervisor_addon.svg)](
-https://my.home-assistant.io/redirect/supervisor_addon/?addon=tater&repository_url=https://github.com/TaterTotterson/hassio-addons-tater
-)
+After Redis Stack is installed and running:
+
+1. Open **Settings → Add-ons → Add-on Store**
+2. Find **Tater AI Assistant** under the Tater add-on repository
+3. Install Tater
+4. Configure your LLM settings
+5. Start the Tater add-on
 
 ### ✅ Post-install setup (one-time)
 
