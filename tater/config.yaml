@@ -1,7 +1,7 @@
-name: "Tater AI Assistant"
-slug: "tater"
-version: "0.0.1"
-description: "Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more."
+name: Tater AI Assistant
+slug: tater
+version: 0.0.1
+description: Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more.
 url: "https://github.com/TaterTotterson/Tater"
 
 # Architectures your image actually supports
