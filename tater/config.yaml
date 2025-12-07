@@ -17,13 +17,6 @@ ingress: false
 
 webui: "http://[HOST]:[PORT:8501]"
 
-ports:
-  "8501/tcp": 8501
-  "8787/tcp": 8787
-  "8788/tcp": 8788
-  "8789/tcp": 8789
-  "8790/tcp": 8790
-
 map:
   - share:rw
 
