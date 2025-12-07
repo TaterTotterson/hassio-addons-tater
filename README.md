@@ -17,7 +17,7 @@ Tater uses Redis for memory, plugins, and automations.
 Install Redis Stack first (recommended for best experience):
 
 [![Install Redis Stack](https://my.home-assistant.io/badges/supervisor_addon.svg)](
-https://my.home-assistant.io/redirect/supervisor_addon/?addon=redis_stack&repository_url=https://github.com/TaterTotterson/tater-ha-addons
+https://my.home-assistant.io/redirect/supervisor_addon/?addon=redis_stack&repository_url=https://github.com/TaterTotterson/hassio-addons-tater
 )
 
 After installing Redis Stack, start it before continuing.
@@ -27,7 +27,7 @@ After installing Redis Stack, start it before continuing.
 Once Redis is running, install Tater:
 
 [![Install Tater](https://my.home-assistant.io/badges/supervisor_addon.svg)](
-https://my.home-assistant.io/redirect/supervisor_addon/?addon=tater&repository_url=https://github.com/TaterTotterson/tater-ha-addons
+https://my.home-assistant.io/redirect/supervisor_addon/?addon=tater&repository_url=https://github.com/TaterTotterson/hassio-addons-tater
 )
 
 ### ✅ Post-install setup (one-time)
