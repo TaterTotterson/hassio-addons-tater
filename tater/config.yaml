@@ -31,7 +31,7 @@ options:
   llm_host: "10.4.20.210"
   llm_port: 1234
   llm_model: "qwen/qwen3-next-80b"
-  redis_host: "core-redis_stack"
+  redis_host: "localhost"
   redis_port: 6379
 
 schema:
