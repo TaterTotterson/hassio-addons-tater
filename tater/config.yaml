@@ -1,0 +1,73 @@
+name: Tater AI Assistant
+slug: tater
+description: >
+  Run Tater as a Home Assistant add-on. Tater connects to any OpenAI-compatible
+  LLM and provides plugins for Home Assistant, HomeKit, Discord, Matrix, and more.
+version: "0.1.0"
+url: https://github.com/TaterTotterson/Tater
+startup: services
+boot: auto
+init: false
+arch:
+  - amd64
+  - aarch64
+
+# Use the prebuilt image published for Tater
+image: "ghcr.io/tatertotterson/tater:latest"
+
+# Map /data so you can store any persistent files if needed later
+map:
+  - data:rw
+
+# Let the add-on use the host network stack (simplifies talking to Redis/LLM)
+host_network: true
+
+# Ingress → Streamlit WebUI on 8501
+ingress: true
+ingress_port: 8501
+ingress_stream: true
+panel_icon: "mdi:robot-happy-outline"
+panel_title: "Tater"
+
+# Optional: expose the HA bridge port (FastAPI homeassistant_platform)
+# so you can call it from Home Assistant as a conversation agent endpoint.
+ports:
+  "8787/tcp": 8787
+
+# -------------------------------------------------------------------
+# User-configurable options (these become environment variables in
+# the Tater container so you don't need to edit .env by hand).
+# -------------------------------------------------------------------
+options:
+  LLM_HOST: "http://127.0.0.1"
+  LLM_PORT: 11434
+  LLM_MODEL: "gemma3-27b-abliterated"
+  LLM_API_KEY: ""
+  REDIS_HOST: "127.0.0.1"
+  REDIS_PORT: 6379
+  # Optional: extra env for debugging or custom setups
+  EXTRA_ENV: {}
+
+schema:
+  LLM_HOST: str
+  LLM_PORT: int
+  LLM_MODEL: str
+  LLM_API_KEY: str
+  REDIS_HOST: str
+  REDIS_PORT: int
+  EXTRA_ENV:
+    type: dict
+    keys:
+      str: str
+
+# Pass options as environment variables into the container
+environment:
+  LLM_HOST: "!env_var LLM_HOST"
+  LLM_PORT: "!env_var LLM_PORT"
+  LLM_MODEL: "!env_var LLM_MODEL"
+  LLM_API_KEY: "!env_var LLM_API_KEY"
+  REDIS_HOST: "!env_var REDIS_HOST"
+  REDIS_PORT: "!env_var REDIS_PORT"
+
+# Make sure Supervisor sets these env vars from the add-on options
+env_file: []
