@@ -67,7 +67,7 @@ After setting your LLM options, click **Save** and then **Restart** the Tater ad
 If a Redis add-on is installed, Tater will automatically connect with no additional configuration.
 
 Defaults used by Tater:
-- Redis Stack add-on from this repository → redis_host: core-redis_stack
+- Redis Stack add-on from this repository → redis_host: localhost
 
 You only need to change Redis settings if you are using an external Redis server.
 
