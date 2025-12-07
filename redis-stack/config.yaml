@@ -1,8 +1,9 @@
 name: "Redis Stack"
-slug: "redis_stack"
-version: "0.0.1"
-description: "Redis Stack server with RedisJSON, RediSearch, and more — for Tater and other apps."
+slug: redis_stack
+version: "latest"
+description: "Redis Stack server (RedisJSON, Search, Bloom, TimeSeries) for Tater and other add-ons."
 url: "https://hub.docker.com/r/redis/redis-stack"
+
 arch:
   - amd64
   - aarch64
@@ -11,27 +12,31 @@ startup: services
 boot: auto
 init: false
 
+# Redis does not need host networking
 host_network: false
 ingress: false
 
-# Default Redis Stack ports:
-# 6379 - Redis
-# 8001 - RedisInsight (optional web UI)
+# Supervisor will pull:
+#   redis/redis-stack:latest
+image: "redis/redis-stack"
+
+# Redis = 6379
+# RedisInsight UI = 8001
 ports:
-  6379/tcp: 6379
-  8001/tcp: 8001
+  "6379/tcp": 6379
+  "8001/tcp": 8001
 
-# Use the official Redis Stack image from Docker Hub
-image: "redis/redis-stack:latest"
+ports_description:
+  "6379/tcp": "Redis server"
+  "8001/tcp": "RedisInsight web UI"
 
-# No special mounts needed; if you want persistence you can map /data to /config
+# Optional persistence (Redis Stack uses /data)
 map:
-  - config:rw
+  - data:rw
 
+# Optional user-visible options (not enforced at runtime without wrapper)
 options:
-  redis_password: ""
-  enable_redisinsight: true
+  allow_empty_password: true
 
 schema:
-  redis_password: str?
-  enable_redisinsight: bool
+  allow_empty_password: bool
