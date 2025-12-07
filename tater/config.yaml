@@ -12,18 +12,21 @@ startup: services
 boot: auto
 init: false
 
-# We want everything (8501, 8787–8790) reachable on the HA host
 host_network: true
 ingress: false
 
 webui: "http://[HOST]:[PORT:8501]"
 
-# NOTE: no 'image:' here anymore — HA will build from this add-on's Dockerfile.
+ports:
+  "8501/tcp": 8501
+  "8787/tcp": 8787
+  "8788/tcp": 8788
+  "8789/tcp": 8789
+  "8790/tcp": 8790
 
 map:
   - share:rw
 
-# User-configurable options that live in /data/options.json
 options:
   llm_host: "10.4.20.210"
   llm_port: 1234
