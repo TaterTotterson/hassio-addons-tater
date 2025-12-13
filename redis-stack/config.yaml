@@ -1,6 +1,6 @@
 name: "Redis Stack"
 slug: redis_stack
-version: "latest"
+version: "7.4.0-v8"
 description: "Redis Stack server (RedisJSON, Search, Bloom, TimeSeries) for Tater and other add-ons."
 url: "https://hub.docker.com/r/redis/redis-stack"
 
@@ -12,16 +12,12 @@ startup: services
 boot: auto
 init: false
 
-# Redis does not need host networking
 host_network: false
 ingress: false
 
-# Supervisor will pull:
-#   redis/redis-stack:latest
+# Base image only — Supervisor applies the version tag
 image: "redis/redis-stack"
 
-# Redis = 6379
-# RedisInsight UI = 8001
 ports:
   "6379/tcp": 6379
   "8001/tcp": 8001
@@ -30,13 +26,15 @@ ports_description:
   "6379/tcp": "Redis server"
   "8001/tcp": "RedisInsight web UI"
 
-# Optional persistence (Redis Stack uses /data)
+# Persist Redis data to HA-managed storage (/data)
 map:
   - data:rw
 
-# Optional user-visible options (not enforced at runtime without wrapper)
 options:
   allow_empty_password: true
+
+schema:
+  allow_empty_password: bool
 
 schema:
   allow_empty_password: bool
