@@ -51,11 +51,11 @@ Tater supports **both local LLM backends and cloud APIs like ChatGPT**.
 Choose **one** of the options below.
 
 ##### Option A: Local LLM (Ollama, LM Studio, LocalAI)
-
+```
 llm_host: http://<your-llm-host>
 llm_port: 11434
 llm_model: <model-name>
-
+```
 Examples:
 - llm_model: llama3.1
 - llm_model: gemma3-27b-abliterated
@@ -66,7 +66,7 @@ No API key is required for local backends.
 
 ##### Option B: ChatGPT / OpenAI-compatible APIs
 ```
- llm_host: https://api.openai.com
+llm_host: https://api.openai.com
 llm_port:
 llm_model: gpt-4o
 llm_api_key: sk-xxxxxxxxxxxxxxxxxxxxxxxx
