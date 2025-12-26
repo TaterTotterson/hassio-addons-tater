@@ -47,18 +47,44 @@ Open:
 
 **Settings → Add-ons → Tater → Configuration**
 
-Set **one** of the following:
+Tater supports **both local LLM backends and cloud APIs like ChatGPT**.
+Choose **one** of the options below.
 
 ##### Option A: Local LLM (Ollama, LM Studio, LocalAI)
-```yaml
-llm_host: http://<your-llm-host>:11434
+
+llm_host: http://<your-llm-host>
+llm_port: 11434
 llm_model: <model-name>
-```
+
 Examples:
 - llm_model: llama3.1
 - llm_model: gemma3-27b-abliterated
 
-After setting your LLM options, click **Save** and then **Restart** the Tater add-on.
+No API key is required for local backends.
+
+ ---
+
+##### Option B: ChatGPT / OpenAI-compatible APIs
+```
+ llm_host: https://api.openai.com
+llm_port:
+llm_model: gpt-4o
+llm_api_key: sk-xxxxxxxxxxxxxxxxxxxxxxxx
+```
+Notes:
+- Leave `llm_port` blank when using HTTPS-based APIs
+- llm_api_key is required only for ChatGPT / OpenAI-style services
+- The API key field is stored securely and hidden in the Home Assistant UI
+
+---
+
+##### Leaving the API key blank
+
+If you are not using ChatGPT or another cloud API:
+- Leave llm_api_key empty
+- Tater will ignore it and run normally with local models
+
+After updating your LLM settings, click **Save** and then **Restart** the Tater add-on.
 
 ---
 
