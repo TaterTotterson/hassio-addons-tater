@@ -1,6 +1,6 @@
 name: "Assistant"
 slug: "tater"
-version: "v50"
+version: "v50.1"
 description: "Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more."
 url: "https://github.com/TaterTotterson/Tater"
 
