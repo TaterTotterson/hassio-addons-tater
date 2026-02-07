@@ -41,6 +41,14 @@ After configuring, click **Save** and then **Restart** the add-on.
    - Enable the `homeassistant` and `ha_automations` platforms if you want Tater
      wired into Assist and automation bridges.
 
+## Agent Lab storage (default)
+
+This add-on stores Agent Lab data in Home Assistant's config directory by
+default for persistence:
+
+- `/config/agent_lab` (persistent)
+- `/app/agent_lab` (symlink to the config path)
+
 ## Using Tater with Assist / Conversation
 
 Once the `homeassistant` platform is enabled in Tater:

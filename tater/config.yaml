@@ -1,6 +1,6 @@
 name: "Assistant"
 slug: "tater"
-version: "v54"
+version: "54.1"
 description: "Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more."
 url: "https://github.com/TaterTotterson/Tater"
 
@@ -21,6 +21,7 @@ panel_title: Assistant
 webui: "http://[HOST]:[PORT:8501]"
 
 map:
+  - config:rw
   - share:rw
 
 options:

@@ -18,6 +18,25 @@ export LLM_API_KEY="$LLM_API_KEY"
 export REDIS_HOST="$REDIS_HOST"
 export REDIS_PORT="$REDIS_PORT"
 
+# Ensure Agent Lab lives in Home Assistant's config for persistence
+AGENT_LAB_ROOT="/config/agent_lab"
+AGENT_LAB_LINK="/app/agent_lab"
+
+mkdir -p "$AGENT_LAB_ROOT"
+
+if [ -e "$AGENT_LAB_LINK" ] && [ ! -L "$AGENT_LAB_LINK" ]; then
+  if [ -d "$AGENT_LAB_LINK" ] && [ -z "$(ls -A "$AGENT_LAB_LINK" 2>/dev/null)" ]; then
+    rm -rf "$AGENT_LAB_LINK"
+  elif [ -d "$AGENT_LAB_LINK" ] && [ -z "$(ls -A "$AGENT_LAB_ROOT" 2>/dev/null)" ]; then
+    cp -a "$AGENT_LAB_LINK"/. "$AGENT_LAB_ROOT"/
+    rm -rf "$AGENT_LAB_LINK"
+  fi
+fi
+
+if [ ! -e "$AGENT_LAB_LINK" ]; then
+  ln -s "$AGENT_LAB_ROOT" "$AGENT_LAB_LINK"
+fi
+
 echo "Starting Tater with:"
 echo "  LLM_HOST=${LLM_HOST}"
 if [ -n "$LLM_PORT" ]; then
