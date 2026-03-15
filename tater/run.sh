@@ -4,7 +4,7 @@ set -e
 CONFIG_PATH=/data/options.json
 
 # Read user options from Home Assistant
-LLM_HOST=$(jq -r '.llm_host // "10.4.20.210"' "$CONFIG_PATH")
+LLM_HOST=$(jq -r '.llm_host // "127.0.0.1"' "$CONFIG_PATH")
 LLM_PORT=$(jq -r '.llm_port // empty' "$CONFIG_PATH")
 LLM_MODEL=$(jq -r '.llm_model // "qwen/qwen3-next-80b"' "$CONFIG_PATH")
 LLM_API_KEY=$(jq -r '.llm_api_key // empty' "$CONFIG_PATH")
@@ -58,5 +58,7 @@ echo "  REDIS_PORT=${REDIS_PORT}"
 # Your base image's WORKDIR is /app
 cd /app
 
-# Start Streamlit
-exec streamlit run webui.py --server.address 0.0.0.0 --server.port 8501
+# Start TaterOS Web UI
+export HTMLUI_HOST="0.0.0.0"
+export HTMLUI_PORT="8501"
+exec sh run_ui.sh

@@ -1,7 +1,7 @@
-name: "Assistant"
+name: "TaterOS Assistant"
 slug: "tater"
-version: "64.2"
-description: "Tater is an AI assistant with a WebUI and plugins for Discord, Home Assistant, Matrix, and more."
+version: "64.3"
+description: "TaterOS AI assistant with web UI, cores, portals, and integrations."
 url: "https://github.com/TaterTotterson/Tater"
 
 arch:
@@ -16,7 +16,7 @@ host_network: true
 ingress: true
 ingress_port: 8501
 panel_icon: mdi:robot
-panel_title: Assistant
+panel_title: TaterOS
 
 webui: "http://[HOST]:[PORT:8501]"
 

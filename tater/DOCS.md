@@ -34,7 +34,7 @@ After configuring, click **Save** and then **Restart** the add-on.
 ## First-time setup
 
 1. Start the add-on.
-2. Click **Open Web UI** to launch the Tater Streamlit interface.
+2. Click **Open Web UI** to launch the TaterOS web interface.
 3. In the WebUI:
    - Verify your LLM connection in **Chat Settings**.
    - Configure plugins like **Home Assistant**, **Overseerr**, **ComfyUI**, etc.
@@ -65,7 +65,7 @@ Once the `homeassistant` platform is enabled in Tater:
 
 Add-on logs show:
 
-- Tater Streamlit startup
+- TaterOS startup (FastAPI/Uvicorn)
 - LLM connectivity messages
 - Plugin activity
 - The Home Assistant bridge health endpoint (`/tater-ha/v1/health`)
