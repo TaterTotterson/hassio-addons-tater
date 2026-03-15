@@ -1,6 +1,6 @@
 name: "TaterOS Assistant"
 slug: "tater"
-version: "64.7"
+version: "64.8"
 description: "TaterOS AI assistant with web UI, cores, portals, and integrations."
 url: "https://github.com/TaterTotterson/Tater"
 
@@ -16,7 +16,7 @@ host_network: true
 ingress: true
 ingress_port: 8501
 panel_icon: mdi:robot
-panel_title: TaterOS
+panel_title: Assistant
 
 webui: "http://[HOST]:[PORT:8501]"
 
