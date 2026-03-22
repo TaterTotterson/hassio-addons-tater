@@ -1,7 +1,7 @@
 name: "Redis Stack"
 slug: redis_stack
-version: "7.4.0-v8"
-description: "Redis Stack server (RedisJSON, Search, Bloom, TimeSeries) for Tater and other add-ons."
+version: "7.4.0-v10"
+description: "Redis Stack server (RedisJSON, Search, Bloom, TimeSeries) with optional password auth for Tater."
 url: "https://hub.docker.com/r/redis/redis-stack"
 
 arch:
@@ -14,9 +14,6 @@ init: false
 
 host_network: false
 ingress: false
-
-# Base image only — Supervisor applies the version tag
-image: "redis/redis-stack"
 
 ports:
   "6379/tcp": 6379
@@ -35,6 +32,4 @@ options:
 
 schema:
   allow_empty_password: bool
-
-schema:
-  allow_empty_password: bool
+  redis_password: password?

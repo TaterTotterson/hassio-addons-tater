@@ -9,14 +9,14 @@ Tater is an AI assistant with deep Home Assistant integration via tools like:
 
 ## Configuration
 
-In the **Configuration** tab, set:
+This add-on no longer uses Redis environment variables in add-on options.
+The **Configuration** tab can be left empty (`{}`).
 
-- **REDIS_HOST / REDIS_PORT**
-  Where Tater should find Redis. This can be:
-  - Another Home Assistant add-on (Redis), or
-  - An external Redis-Stack instance on your network.
+Redis is configured inside the Tater Web UI:
 
-After configuring, click **Save** and then **Restart** the add-on.
+- On first run (or when Redis is missing), Tater shows a Redis setup popup.
+- Enter host, port, and optional password/TLS settings.
+- Save, then continue setup in the Web UI.
 
 LLM/model settings are configured inside Tater WebUI, not in add-on options.
 
@@ -32,11 +32,18 @@ LLM/model settings are configured inside Tater WebUI, not in add-on options.
 
 ## Agent Lab storage (default)
 
-This add-on stores Agent Lab data in Home Assistant's config directory by
-default for persistence:
+This add-on stores data under `/config/tater` by default for persistence:
 
-- `/config/agent_lab` (persistent)
+- `/config/tater/agent_lab` (persistent)
 - `/app/agent_lab` (symlink to the config path)
+
+Redis setup config is also persisted:
+
+- `/config/tater/.runtime/redis_connection.json` (persistent)
+- `/app/.runtime/redis_connection.json` (symlinked runtime path used by Tater)
+
+If you were on an older add-on version, existing data at `/config/agent_lab`
+and `/config/.runtime` is auto-migrated on startup.
 
 ## Using Tater with Assist / Conversation
 

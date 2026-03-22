@@ -21,7 +21,11 @@ Tater uses Redis for memory, verbas, and automations.
 
 1. Open **Settings -> Add-ons -> Add-on Store**
 2. Find **Redis Stack** under the Tater add-on repository
-3. Install and **start** Redis Stack
+3. Install Redis Stack
+4. (Optional) In Redis Stack **Configuration**, set:
+   - `allow_empty_password: false`
+   - `redis_password: "<your password>"`
+5. Start Redis Stack
 
 Redis Stack should be running before Tater is started.
 
@@ -32,31 +36,40 @@ After Redis Stack is installed and running:
 1. Open **Settings -> Add-ons -> Add-on Store**
 2. Find **Tater AI Assistant** under the Tater add-on repository
 3. Install Tater
-4. (Optional) Configure Redis settings if you use an external Redis server
-5. Start the Tater add-on
+4. Start the Tater add-on
 
 ## Post-install setup (one-time)
 
-After starting Tater, open the add-on Web UI and configure your model/server
-inside Tater itself:
+After starting Tater, open the add-on Web UI and complete setup inside Tater:
 
 1. Open **Tater Web UI**
-2. Go to **Settings -> Hydra Models**
-3. Configure your Base Model (or Beast Mode head models)
-4. Save model settings
+2. If prompted, complete the **Redis setup popup** and save
+3. Go to **Settings -> Hydra Models**
+4. Configure your Base Model (or Beast Mode head models)
+5. Save model settings
 
 Model settings are no longer configured in Home Assistant add-on options.
 
-## Redis (automatic)
+## Redis setup
 
-If a Redis add-on is installed, Tater will automatically connect with no
-additional configuration.
+Redis host/port is no longer configured in add-on options or `.env`.
 
-Default used by this add-on:
-- Redis Stack add-on from this repository -> `redis_host: localhost`
+If Tater cannot detect a usable Redis connection at startup, the WebUI shows a
+Redis setup popup. Enter your Redis details there (host, port, optional
+password/TLS) and save.
 
-You only need to change Redis settings in add-on config when using an external
-Redis server.
+Default for Redis Stack add-on in this repository:
+- Host: `localhost`
+- Port: `6379`
+- Password: leave blank unless you set `redis_password` in Redis Stack config
+
+Saved Redis config path:
+- `/app/.runtime/redis_connection.json` (persisted at `/config/tater/.runtime/redis_connection.json`)
+
+Persistent data root:
+- `/config/tater` (includes `agent_lab` and `.runtime`)
+
+Older installs are auto-migrated from `/config/agent_lab` and `/config/.runtime`.
 
 ## You're ready
 
