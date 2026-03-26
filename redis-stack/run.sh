@@ -23,8 +23,14 @@ else
 fi
 
 if [ "$#" -eq 0 ]; then
-  echo "ERROR: No startup command provided by base image."
-  exit 1
+  if [ -x /entrypoint.sh ]; then
+    # Home Assistant can start this add-on without passing image CMD args.
+    # Redis Stack's default startup command lives at /entrypoint.sh.
+    set -- /entrypoint.sh
+  else
+    echo "ERROR: No startup command provided and /entrypoint.sh was not found."
+    exit 1
+  fi
 fi
 
 exec "$@"

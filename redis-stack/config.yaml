@@ -1,6 +1,6 @@
 name: "Redis Stack"
 slug: redis_stack
-version: "7.4.0-v10"
+version: "7.4.0-v11"
 description: "Redis Stack server (RedisJSON, Search, Bloom, TimeSeries) with optional password auth for Tater."
 url: "https://hub.docker.com/r/redis/redis-stack"
 

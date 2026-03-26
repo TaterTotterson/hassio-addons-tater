@@ -7,6 +7,6 @@ RUN apt-get update \
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-# Keep the base image CMD (starts Redis Stack + RedisInsight), but inject
-# add-on option handling first.
+# Start with add-on option handling, then delegate to Redis Stack startup.
 ENTRYPOINT ["/run.sh"]
+CMD ["/entrypoint.sh"]
