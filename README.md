@@ -1,3 +1,12 @@
+<div align="center">
+  <a href="https://taterassistant.com">
+    <img src="images/tater-repo-logo.png" alt="Home Assistant Add-ons" width="460"/>
+  </a>
+</div>
+<h3 align="center">
+  <a href="https://taterassistant.com">taterassistant.com</a>
+</h3>
+
 # Tater Add-ons for Home Assistant
 
 This repository contains Home Assistant add-ons for running
