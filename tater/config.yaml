@@ -13,6 +13,11 @@ boot: auto
 init: false
 
 host_network: true
+devices:
+  - /dev/net/tun
+privileged:
+  - NET_ADMIN
+  - NET_RAW
 ingress: true
 ingress_port: 8501
 panel_icon: mdi:robot

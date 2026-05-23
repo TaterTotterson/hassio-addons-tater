@@ -80,6 +80,23 @@ Persistent data root:
 
 Older installs are auto-migrated from `/config/agent_lab` and `/config/.runtime`.
 
+## Guardian Core tunnels
+
+The Tater add-on includes the system tools Guardian Core needs for tunnel
+support:
+
+- Tailscale / tailscaled
+- WireGuard / wg-quick
+- Cloudflare Tunnel / cloudflared
+
+The add-on runs on the host network. It also requests `/dev/net/tun` plus
+`NET_ADMIN` and `NET_RAW` so Guardian Core can start and stop Tailscale or
+WireGuard from inside the add-on. Cloudflare Tunnel normally only needs outbound
+network access, but it uses the same add-on image.
+
+Guardian tunnel controls are still disabled inside Tater by default. Enable
+**Allow Tunnel Controls** in Guardian Core before using start/stop actions.
+
 ## You're ready
 
 Once Redis is running and Hydra Models are configured in the Tater Web UI,

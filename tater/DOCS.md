@@ -45,6 +45,28 @@ Redis setup config is also persisted:
 If you were on an older add-on version, existing data at `/config/agent_lab`
 and `/config/.runtime` is auto-migrated on startup.
 
+## Guardian Core tunnel controls
+
+This add-on includes:
+
+- `tailscale` and `tailscaled`
+- `wg` and `wg-quick`
+- `cloudflared`
+
+The add-on requests:
+
+- host networking
+- `/dev/net/tun`
+- `NET_ADMIN`
+- `NET_RAW`
+
+Those are needed for Guardian Core to control Tailscale and WireGuard tunnel
+interfaces. Cloudflare Tunnel normally does not need the extra tunnel device or
+network capabilities, but it is included in the same add-on image.
+
+Inside Tater, Guardian Core still requires **Allow Tunnel Controls** before it
+will run start/stop actions.
+
 ## Using Tater with Assist / Conversation
 
 Once the `homeassistant` portal is enabled in Tater:
