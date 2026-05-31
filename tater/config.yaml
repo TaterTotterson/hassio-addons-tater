@@ -1,6 +1,6 @@
 name: "TaterOS Assistant"
 slug: "tater"
-version: "84.1"
+version: "85"
 description: "TaterOS AI assistant with web UI, cores, portals, and integrations."
 url: "https://github.com/TaterTotterson/Tater"
 
