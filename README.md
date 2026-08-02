@@ -79,12 +79,13 @@ Default for Redis Stack add-on in this repository:
 - Password: leave blank unless you set `redis_password` in Redis Stack config
 
 Saved Redis config path:
-- `/app/.runtime/redis_connection.json` (persisted at `/config/tater/.runtime/redis_connection.json`)
+- `/config/tater/.runtime/redis_connection.json`
 
 Persistent data root:
 - `/config/tater` (includes `agent_lab` and `.runtime`)
 
-Older installs are auto-migrated from `/config/agent_lab` and `/config/.runtime`.
+The add-on points Tater directly at these persistent directories instead of
+using container-local `/app` directories.
 
 ## You're ready
 

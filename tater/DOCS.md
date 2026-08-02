@@ -34,16 +34,12 @@ LLM/model settings are configured inside Tater WebUI, not in add-on options.
 
 This add-on stores data under `/config/tater` by default for persistence:
 
-- `/config/tater/agent_lab` (persistent)
-- `/app/agent_lab` (symlink to the config path)
+- `/config/tater/agent_lab` (used directly as Tater's Agent Lab)
+- `/config/tater/.runtime` (used directly for local runtime configuration)
 
-Redis setup config is also persisted:
+Redis setup config is persisted at:
 
-- `/config/tater/.runtime/redis_connection.json` (persistent)
-- `/app/.runtime/redis_connection.json` (symlinked runtime path used by Tater)
-
-If you were on an older add-on version, existing data at `/config/agent_lab`
-and `/config/.runtime` is auto-migrated on startup.
+- `/config/tater/.runtime/redis_connection.json`
 
 ## Using Tater with Assist / Conversation
 
