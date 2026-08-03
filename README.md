@@ -61,6 +61,10 @@ The Redis connection configuration is saved at:
 
 - `/config/tater/.runtime/redis_connection.json`
 
+Tater Native satellite pairing credentials are saved at:
+
+- `/config/tater/.runtime/native_satellite_credentials.json`
+
 The complete persistent data root is:
 
 - `/config/tater` (includes `agent_lab` and `.runtime`)

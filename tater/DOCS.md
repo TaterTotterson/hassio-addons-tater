@@ -41,6 +41,10 @@ Redis setup config is persisted at:
 
 - `/config/tater/.runtime/redis_connection.json`
 
+Tater Native satellite pairing credentials are persisted at:
+
+- `/config/tater/.runtime/native_satellite_credentials.json`
+
 ## Using Tater with Assist / Conversation
 
 Once the `homeassistant` portal is enabled in Tater:
