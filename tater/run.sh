@@ -7,7 +7,9 @@ set -e
 TATER_DATA_ROOT="${TATER_DATA_ROOT:-/config/tater}"
 export TATER_AGENT_ROOT="${TATER_AGENT_ROOT:-$TATER_DATA_ROOT/agent_lab}"
 export TATER_RUNTIME_DIR="${TATER_RUNTIME_DIR:-$TATER_DATA_ROOT/.runtime}"
-export TATER_NATIVE_SATELLITE_CREDENTIALS_PATH="${TATER_NATIVE_SATELLITE_CREDENTIALS_PATH:-$TATER_RUNTIME_DIR/native_satellite_credentials.json}"
+# The base Docker image defaults this to /app/.runtime. Always replace that
+# container-local path with Home Assistant's persistent config storage.
+export TATER_NATIVE_SATELLITE_CREDENTIALS_PATH="$TATER_RUNTIME_DIR/native_satellite_credentials.json"
 
 mkdir -p "$TATER_AGENT_ROOT" "$TATER_RUNTIME_DIR"
 
