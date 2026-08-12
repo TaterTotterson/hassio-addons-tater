@@ -6,9 +6,10 @@ set -e
 # directories or symlinks that disappear when Supervisor recreates the add-on.
 TATER_DATA_ROOT="${TATER_DATA_ROOT:-/config/tater}"
 export TATER_AGENT_ROOT="${TATER_AGENT_ROOT:-$TATER_DATA_ROOT/agent_lab}"
-export TATER_RUNTIME_DIR="${TATER_RUNTIME_DIR:-$TATER_DATA_ROOT/.runtime}"
-# The base Docker image defaults this to /app/.runtime. Always replace that
-# container-local path with Home Assistant's persistent config storage.
+# The base Docker image sets this to /app/.runtime. Always replace that
+# container-local path with Home Assistant's persistent config storage instead
+# of preserving the inherited value.
+export TATER_RUNTIME_DIR="$TATER_DATA_ROOT/.runtime"
 export TATER_NATIVE_SATELLITE_CREDENTIALS_PATH="$TATER_RUNTIME_DIR/native_satellite_credentials.json"
 
 mkdir -p "$TATER_AGENT_ROOT" "$TATER_RUNTIME_DIR"
