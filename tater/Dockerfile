@@ -1,5 +1,6 @@
-# Use your existing prebuilt Tater image as the base
-FROM ghcr.io/tatertotterson/tater:latest
+# Pin the add-on to the Tater release it was validated with. A config version
+# bump makes Home Assistant rebuild the add-on and pull this release.
+FROM ghcr.io/tatertotterson/tater:v1.9.0
 
 # Install jq so we can read /data/options.json
 RUN apt-get update \
