@@ -101,6 +101,6 @@ the add-on page and start chatting.
 
 ## License and trademarks
 
-This repository does not currently publish a general license. Unless a file states otherwise, its source and assets are not licensed for reuse.
+This project is licensed under the [GNU Affero General Public License v3.0](LICENSE).
 
-The Tater name and logo are governed by the [Tater Trademark Policy](TRADEMARKS.md).
+The Tater name and logo are governed by the [Tater Trademark Policy](TRADEMARKS.md).\n
