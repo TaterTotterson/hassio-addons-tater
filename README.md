@@ -98,3 +98,9 @@ password/TLS) and save.
 
 Once Hydra Models are configured in the Tater Web UI, open the Tater UI from
 the add-on page and start chatting.
+
+## License and trademarks
+
+This repository does not currently publish a general license. Unless a file states otherwise, its source and assets are not licensed for reuse.
+
+The Tater name and logo are governed by the [Tater Trademark Policy](TRADEMARKS.md).
